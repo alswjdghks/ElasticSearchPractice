@@ -1,7 +1,7 @@
 package com.elasticsearch.practice.service;
 
 import com.elasticsearch.practice.document.PostDocument;
-import com.elasticsearch.practice.repository.PostElasticRepository;
+import com.elasticsearch.practice.repository.elastic.PostElasticRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

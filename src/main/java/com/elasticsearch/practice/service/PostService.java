@@ -3,8 +3,8 @@ package com.elasticsearch.practice.service;
 import com.elasticsearch.practice.document.PostDocument;
 import com.elasticsearch.practice.domain.Post;
 import com.elasticsearch.practice.dto.PostRequestDto;
-import com.elasticsearch.practice.repository.PostElasticRepository;
-import com.elasticsearch.practice.repository.PostRepository;
+import com.elasticsearch.practice.repository.elastic.PostElasticRepository;
+import com.elasticsearch.practice.repository.jpa.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
