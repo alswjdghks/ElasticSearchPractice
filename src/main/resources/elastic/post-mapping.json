@@ -3,17 +3,30 @@
     "id": {
       "type": "long"
     },
-    "username": {
-      "type": "text",
-      "analyzer": "korean"
-    },
     "title": {
       "type": "text",
-      "analyzer": "korean"
+      "fields": {
+        "ngram": {
+          "type": "text",
+          "analyzer": "my-ngram-analyzer"
+        },
+        "nori": {
+          "type": "text",
+          "analyzer": "my-nori-analyzer"
+        }
+      }
     },
     "content": {
       "type": "text",
-      "analyzer": "korean"
+      "analyzer": "my-nori-analyzer"
+    },
+    "createdDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSS||epoch_millis"
+    },
+    "lastModifiedDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSS||epoch_millis"
     }
   }
 }
