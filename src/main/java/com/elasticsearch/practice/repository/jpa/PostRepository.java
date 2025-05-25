@@ -1,4 +1,4 @@
-package com.elasticsearch.practice.repository;
+package com.elasticsearch.practice.repository.jpa;
 
 import com.elasticsearch.practice.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;

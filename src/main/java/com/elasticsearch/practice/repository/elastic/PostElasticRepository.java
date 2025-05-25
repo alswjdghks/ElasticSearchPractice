@@ -1,4 +1,4 @@
-package com.elasticsearch.practice.repository;
+package com.elasticsearch.practice.repository.elastic;
 
 import com.elasticsearch.practice.document.PostDocument;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
