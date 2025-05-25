@@ -3,14 +3,10 @@ package com.elasticsearch.practice.document;
 import com.elasticsearch.practice.domain.BaseTimeEntity;
 import com.elasticsearch.practice.domain.Post;
 import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Mapping;
-import org.springframework.data.elasticsearch.annotations.Setting;
-import org.springframework.data.elasticsearch.annotations.WriteTypeHint;
+import lombok.*;
+import org.springframework.data.elasticsearch.annotations.*;
+
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -26,19 +22,25 @@ import org.springframework.data.elasticsearch.annotations.WriteTypeHint;
 /*
     Elasticsearch 인덱스의 매핑을 정의하는 JSON 파일의 경로 지정 (런타임 필드로 인덱스 매핑을 정의하면, 클래스 경로에 해당 JSON 파일의 경로를 설정해야한다.)
 */
-public class PostDocument extends BaseTimeEntity {
+public class PostDocument{
     @Id
     private Long id;
     private String username;
     private String title;
     private String content;
+    @Field(type = FieldType.Date, format = {}, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS||epoch_millis")
+    private LocalDateTime createdDate;
+    @Field(type = FieldType.Date, format = {}, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS||epoch_millis")
+    private LocalDateTime lastModifiedDate;
 
     @Builder
-    public PostDocument(Long id, String username, String title, String content) {
+    public PostDocument(Long id, String username, String title, String content, LocalDateTime createdDate, LocalDateTime lastModifiedDate) {
         this.id = id;
         this.username = username;
         this.title = title;
         this.content = content;
+        this.createdDate = LocalDateTime.now();
+        this.lastModifiedDate = LocalDateTime.now();
     }
 
     public static PostDocument from(Post post) {
@@ -47,6 +49,8 @@ public class PostDocument extends BaseTimeEntity {
                 .username(post.getUsername())
                 .title(post.getTitle())
                 .content(post.getContent())
+                .createdDate(post.getCreatedDate())
+                .lastModifiedDate(post.getLastModifiedDate())
                 .build();
     }
 }

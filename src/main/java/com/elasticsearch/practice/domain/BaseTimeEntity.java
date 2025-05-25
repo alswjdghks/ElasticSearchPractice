@@ -20,11 +20,9 @@ public class BaseTimeEntity {
 
     @Column(updatable = false)
     @CreatedDate
-    @Field(type = FieldType.Date, format = {}, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS||epoch_millis")
     private LocalDateTime createdDate;
 
     @LastModifiedDate
-    @Field(type = FieldType.Date, format = {}, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS||epoch_millis")
     private LocalDateTime lastModifiedDate;
 
 }
